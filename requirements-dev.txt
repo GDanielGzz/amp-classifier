@@ -1,0 +1,13 @@
+# Development-only dependencies. Installed in addition to requirements.txt.
+
+-r requirements.txt
+
+pytest>=8.3,<9.0
+
+# Notebooks + plots for data exploration and results figures.
+jupyter>=1.0,<2.0
+matplotlib>=3.9,<4.0
+seaborn>=0.13,<1.0
+
+# Convenience tools used by some training scripts.
+tqdm>=4.66,<5.0

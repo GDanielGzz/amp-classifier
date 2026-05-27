@@ -1,0 +1,57 @@
+# Production dependencies for the AMP Classifier — training + Gradio demo.
+#
+# Compatible-range pins so the project installs cleanly on Python 3.11
+# through Python 3.13 without needing a C toolchain. The exact pins from
+# AMP_CLASSIFIER_HANDOFF.md §5 Step 1.3 (which were verified once on
+# Python 3.11) live in the "Tested against" block at the bottom of this
+# file; use those for an identical lock file in CI.
+#
+# Why ranges instead of exact pins: numpy 1.26.4 has no cp313 wheel, so
+# pip would otherwise try to build it from source and fail. Allowing
+# numpy 2.x lets pip pick a wheel that matches the running interpreter.
+#
+# CPU-only torch by default. For Phase 2 GPU swap:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+gradio>=4.44,<6.0
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.32,<1.0
+pydantic>=2.9,<3.0
+pydantic-settings>=2.5,<3.0
+python-dotenv>=1.0,<2.0
+
+numpy>=1.26,<3.0
+pandas>=2.2,<3.0
+scipy>=1.13,<2.0
+scikit-learn>=1.5,<2.0
+xgboost>=2.1,<4.0
+
+biopython>=1.84,<2.0
+
+# CPU-only torch — keep the HF Space cold-start under the free-tier image
+# limit. Phase 2 GPU swap noted in the header above.
+torch>=2.4,<3.0
+
+# DRAMP and UniProt acquisition.
+requests>=2.32,<3.0
+
+# Phase 2B — ESM2 protein language model embeddings via HuggingFace.
+transformers>=4.30,<5.0
+
+# Phase 2C — DRAMP activity metadata is shipped as XLSX.
+openpyxl>=3.0,<4.0
+
+# Tested against (for an identical reproduction — Python 3.11.x):
+#   gradio==4.44.0
+#   fastapi==0.115.0
+#   uvicorn[standard]==0.32.0
+#   pydantic==2.9.2
+#   pydantic-settings==2.5.2
+#   python-dotenv==1.0.1
+#   numpy==1.26.4
+#   pandas==2.2.3
+#   scikit-learn==1.5.2
+#   xgboost==2.1.1
+#   biopython==1.84
+#   torch==2.4.1
+#   requests==2.32.3

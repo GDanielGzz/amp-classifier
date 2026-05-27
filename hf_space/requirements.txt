@@ -1,0 +1,13 @@
+# Pinned for Hugging Face Spaces free tier (CPU only, ~16GB RAM).
+# Keeps the cold-start image small by avoiding optional notebook deps.
+
+gradio==4.44.0
+numpy>=1.26,<3.0
+scikit-learn>=1.5,<2.0
+xgboost>=2.1,<4.0
+biopython>=1.84,<2.0
+
+# CPU-only torch wheel. The +cpu suffix is critical for Space cold-start
+# size — full CUDA wheel is ~2GB and exceeds the free-tier image limit.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.4,<3.0

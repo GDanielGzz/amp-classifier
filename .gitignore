@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.local
+
+# Data — never commit the raw, processed, clustered, or split corpora.
+# Re-run `make data && make cluster && make splits` to regenerate.
+ml/data/raw/*
+ml/data/processed/*
+ml/data/clusters/*
+ml/data/splits/*
+!ml/data/raw/.gitkeep
+!ml/data/processed/.gitkeep
+!ml/data/clusters/.gitkeep
+!ml/data/splits/.gitkeep
+!ml/data/splits/SPLIT_NOTES.md
+
+# Model checkpoints. Regenerable via `make baseline` and `make cnn`.
+# The small CNN weights publish to Hugging Face Hub when Phase 1 ships.
+ml/checkpoints/*
+!ml/checkpoints/.gitkeep
+
+# Gradio runtime
+gradio_cached_examples/
+flagged/
+
+# HF Space mirror — keep the directory but skip large binary copies.
+hf_space/checkpoints/
+hf_space/.gradio/
+
+# IDE
+.vscode/launch.json.bak-*
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# =====================================================================
+# Internal documentation — never commit to public repos.
+# Documents the building process; contains session handoffs and plans
+# not intended for outside reviewers.
+# =====================================================================
+HANDOFF.md
+CLAUDE.md
+PLAN.md
+.claude/
+*.session.json
+claude.session.json
+
+# Ad-hoc personal notes
+notes/
+scratch/
+private/
+*.private.md
+*.scratch.md
+*.notes.md
+
+# Working drafts of public docs — promoted manually when publishing.
+# (LIMITATIONS.md and CITATION.cff are intentionally NOT excluded — they
+# belong in the public repo.)
+README_PUBLIC.md
+PUBLISH.md

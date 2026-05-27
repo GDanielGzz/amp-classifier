@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use this software in your work, please cite it as below."
+type: software
+title: "AMP Classifier — trained antimicrobial peptide discriminator with cluster-aware splits"
+abstract: >-
+  A binary antimicrobial peptide / non-AMP classifier trained on the
+  DRAMP 3.0 corpus with mmseqs2 cluster-aware splits at 40% sequence
+  identity to prevent the redundancy-driven AUC inflation typical of
+  naive splits in the AMP literature. ESM2-650M frozen embeddings plus a
+  small MLP head reach AUC 0.919 [0.906–0.931] on the cluster-aware test
+  set, beating an XGBoost baseline over 428 engineered features (AUC
+  0.864 [0.845–0.880]) with non-overlapping 95% bootstrap CIs.
+authors:
+  - family-names: "González Lozano"
+    given-names: "Daniel"
+    orcid: "https://orcid.org/0009-0002-1737-276X"
+    email: "sleepy.komodo@protonmail.com"
+    affiliation: "Tecnológico de Monterrey, Monterrey, Mexico"
+version: "v0.1-portfolio-snapshot"
+date-released: "2026-05-27"
+license: MIT
+url: "https://github.com/GDanielGzz/amp-classifier"
+repository-code: "https://github.com/GDanielGzz/amp-classifier"
+keywords:
+  - "antimicrobial peptides"
+  - "machine learning"
+  - "ESM2"
+  - "protein language models"
+  - "cluster-aware splits"
+  - "bootstrap confidence intervals"
+  - "Gradio"
+  - "Hugging Face Spaces"
+  - "DRAMP"
+  - "bioinformatics"
+# Uncomment and fill in after the Zenodo deposit:
+# preferred-citation:
+#   type: report
+#   title: "AMP Classifier: A trained ESM2-650M head for antimicrobial peptide discrimination on cluster-aware splits"
+#   authors:
+#     - family-names: "González Lozano"
+#       given-names: "Daniel"
+#       orcid: "https://orcid.org/0009-0002-1737-276X"
+#   year: 2026
+#   doi: "10.5281/zenodo.XXXXXXX"
+#   institution:
+#     name: "Tecnológico de Monterrey"
