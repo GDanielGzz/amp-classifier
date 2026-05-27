@@ -58,9 +58,10 @@ choices:
   engineered features, evaluated on the same cluster-aware held-out set
   with bootstrap CIs on both metrics. The comparison reports which model
   wins by how much, with explicit uncertainty.
-- **An interactive web demo.** A Hugging Face Space lets biologists
-  paste a peptide sequence and get a probability with feature-level
-  explanation, without setting up a Python environment locally.
+- **An interactive web demo.** A Gradio app lets biologists paste a
+  peptide sequence and get a probability with feature-level explanation;
+  runs locally now, with a Hugging Face Spaces deployment planned for
+  follow-up.
 
 ## How to reproduce
 
@@ -136,11 +137,11 @@ See [`LIMITATIONS.md`](LIMITATIONS.md) for the full caveats list.
 
 ## Live demo
 
-[**Try it on Hugging Face Spaces**](https://huggingface.co/spaces/SleepyKomodo/amp-classifier)
-
-Paste a peptide, get the AMP probability with feature-level explanation.
-Three pre-populated examples (one canonical AMP, one canonical non-AMP,
-one ambiguous case) demonstrate the calibration.
+A Hugging Face Spaces deployment is planned; the deploy bundle is
+prepared in `hf_space/` and will go live in a follow-up release. In the
+meantime, run the Gradio demo locally with `make app` (see *How to
+reproduce* above) — paste a peptide and get the AMP probability with a
+feature-level explanation.
 
 ## Citation
 
