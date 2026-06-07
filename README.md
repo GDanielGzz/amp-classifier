@@ -150,7 +150,7 @@ If you use this work, please cite the technical report:
 ```
 González Lozano, D. (2026). AMP Classifier: A trained ESM2-650M head
 for antimicrobial peptide discrimination on cluster-aware splits.
-Zenodo. https://doi.org/10.5281/zenodo.[PENDING_DEPOSIT]
+Zenodo (DOI pending deposit; added on first tagged release).
 ```
 
 A machine-readable citation lives in [`CITATION.cff`](CITATION.cff);
