@@ -63,6 +63,14 @@ choices:
   runs locally now, with a Hugging Face Spaces deployment planned for
   follow-up.
 
+
+These three choices were later extracted into a standalone, tested standard:
+[**bio-ml-eval-protocols**](https://github.com/GDanielGzz/bio-ml-eval-protocols).
+The `bioeval` package there generalises the split, leakage-audit and
+bootstrap machinery used here - group-aware splitting, split auditing, and
+cluster-aware BCa and paired confidence intervals - with 66 tests and CI. This
+repository is the case study; that one is the method.
+
 ## How to reproduce
 
 Requires Python 3.11 through 3.13.
