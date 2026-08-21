@@ -4,7 +4,7 @@
 cluster-aware evaluation, calibration analysis, and a frozen protein-LM
 demonstration of where engineered features hit their ceiling.*
 
-**Author:** Sayaka (postdoctoral, Tecnológico de Monterrey × DTU)
+**Author:** Daniel González (postdoctoral, Tecnológico de Monterrey × DTU)
 **Date:** 2026-05-17
 **Source:** `https://github.com/<HF_USERNAME>/amp-classifier`
 
@@ -538,7 +538,7 @@ mammalian-cell hemolysis control (since Trp-rich AMPs trend toward
 host membrane toxicity), and report the hit rate honestly in a
 follow-up. Any result is publishable — even 0/5 active hits would be
 an informative negative finding about the limits of training-corpus-
-extrapolated design heuristics. This is operationally Sayaka's call
+extrapolated design heuristics. This is operationally the maintainer's call
 once lab time and synthesis budget align.
 
 ---

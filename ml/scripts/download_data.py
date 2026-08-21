@@ -375,7 +375,7 @@ def _missing_text(reason):
         "Failure mode\n\n"
         f"{reason}\n\n"
         "Do not fall back to APD3 or a random split. Handoff section 9 calls\n"
-        "for stopping here and asking Sayaka.\n"
+        "for stopping here and asking the maintainer.\n"
     )
 
 

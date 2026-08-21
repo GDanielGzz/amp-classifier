@@ -6,7 +6,7 @@ embarrassment. The discipline that makes this kind of model trustworthy in
 the AMP literature is exactly the same discipline that surfaces these
 caveats.
 
-Last updated: 2026-05-23 (initial scaffolding by CodeNya)
+Last updated: 2026-05-23
 Edit this file in place as the project evolves; resolved limitations get
 struck through with a date and a brief note.
 

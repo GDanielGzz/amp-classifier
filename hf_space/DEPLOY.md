@@ -1,6 +1,6 @@
 # Deploy to Hugging Face Spaces
 
-This directory is the deploy-ready bundle. Sayaka pushes manually — the
+This directory is the deploy-ready bundle. the maintainer pushes manually — the
 autonomous session does NOT push (per HANDOFF.md §1).
 
 ## One-time setup
