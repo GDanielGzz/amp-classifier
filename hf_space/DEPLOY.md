@@ -55,7 +55,7 @@ Once your HF Space exists and the bundle is built:
 ```powershell
 cd "C:\Users\danie\Downloads\Claude\projects\AMP Classifier\hf_space"
 git init -b main
-git remote add origin https://huggingface.co/spaces/<HF_USERNAME>/amp-classifier
+git remote add origin https://huggingface.co/spaces/SleepyKomodo/amp-classifier
 git lfs install
 git lfs track "*.pt" "*.json"
 git add .gitattributes
@@ -66,7 +66,7 @@ git push -u origin main
 
 The first push takes a few minutes. Hugging Face will install
 `requirements.txt`, then start your app at
-`https://huggingface.co/spaces/<HF_USERNAME>/amp-classifier`.
+`https://huggingface.co/spaces/SleepyKomodo/amp-classifier`.
 
 ## Verify
 
@@ -88,7 +88,7 @@ Smoke test once it's up:
 
 ## Update the model card
 
-Once your HF username is set, replace `<HF_USERNAME>` in:
+The HF username (`SleepyKomodo`) is already substituted in:
 
 - `hf_space/README.md` (GitHub repo link)
 - `docs/model_card.md` (also gets auto-updated by Step 11's docs pass)

@@ -205,7 +205,7 @@ median 20, mean ~25. Full provenance in `docs/data_card.md`.
 ## Reproduction
 
 ```bash
-git clone https://github.com/<HF_USERNAME>/amp-classifier
+git clone https://github.com/SleepyKomodo/amp-classifier
 cd amp-classifier
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt

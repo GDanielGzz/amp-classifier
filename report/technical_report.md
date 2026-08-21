@@ -6,7 +6,7 @@ demonstration of where engineered features hit their ceiling.*
 
 **Author:** Daniel González (postdoctoral, Tecnológico de Monterrey × DTU)
 **Date:** 2026-05-17
-**Source:** `https://github.com/<HF_USERNAME>/amp-classifier`
+**Source:** `https://github.com/SleepyKomodo/amp-classifier`
 
 ---
 
