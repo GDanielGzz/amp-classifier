@@ -44,9 +44,13 @@ Remove-Item -Recurse -Force hf_space\ml\scripts\__pycache__ -ErrorAction Silentl
 Get-ChildItem hf_space\ml\checkpoints
 ```
 
-You should see `baseline_xgb.json` (~1-3 MB) and `cnn_best.pt` (~1 MB).
+You should see the four checkpoints `app.py` loads: `baseline_xgb.json`
+(~1-3 MB), `cnn_best.pt` (~1 MB), `cnn_calibrator.joblib` (Platt scaler
+for the CNN) and `esm_head_best.pt` (the ESM2-650M MLP head; the
+backbone itself is downloaded from the Hub on first start). Any that are
+missing are skipped by the demo, and the Design tab needs the ESM head.
 The other baseline checkpoints (LogReg, RF) can be deleted to save space
-since the demo only loads XGB + CNN, but it's harmless to leave them.
+since the demo doesn't load them, but it's harmless to leave them.
 
 ## Push to the Space
 
@@ -57,7 +61,7 @@ cd "C:\Users\danie\Downloads\Claude\projects\AMP Classifier\hf_space"
 git init -b main
 git remote add origin https://huggingface.co/spaces/SleepyKomodo/amp-classifier
 git lfs install
-git lfs track "*.pt" "*.json"
+git lfs track "*.pt" "*.json" "*.joblib"
 git add .gitattributes
 git add .
 git commit -m "Initial AMP Classifier deploy"
@@ -88,10 +92,10 @@ Smoke test once it's up:
 
 ## Update the model card
 
-The HF username (`SleepyKomodo`) is already substituted in:
-
-- `hf_space/README.md` (GitHub repo link)
-- `docs/model_card.md` (also gets auto-updated by Step 11's docs pass)
+The HF username (`SleepyKomodo`) is used in the Space URL above. The
+Space card, `hf_space/README.md`, links to the GitHub repo
+(`GDanielGzz/amp-classifier`) for the full docs, limitations and
+citation; update those links if the repo moves.
 
 ## License caveats
 
@@ -113,7 +117,7 @@ Second most common: model checkpoint files weren't tracked by git LFS
 and got committed as text. Fix with:
 
 ```powershell
-git lfs migrate import --include="*.pt,*.json"
+git lfs migrate import --include="*.pt,*.json,*.joblib"
 git push --force
 ```
 
