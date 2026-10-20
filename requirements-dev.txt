@@ -3,6 +3,7 @@
 -r requirements.txt
 
 pytest>=8.3,<9.0
+ruff>=0.6,<1.0
 
 # Notebooks + plots for data exploration and results figures.
 jupyter>=1.0,<2.0

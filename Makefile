@@ -1,17 +1,19 @@
 # Makefile for the AMP Classifier project.
 #
-# Targets assume the venv is already activated. The project folder contains
-# a space — when invoking make from a parent directory, quote the path:
+# Targets assume the venv is already activated. To invoke make from a
+# parent directory:
 #
-#   make -C "AMP Classifier" baseline
+#   make -C amp-classifier baseline
 #
-# Run `make help` for a list of targets.
+# Run `make help` for a list of targets. On Windows without `make`, use
+# dev.bat, which mirrors these targets.
 
 PYTHON ?= python
 PIP    ?= pip
 PORT   ?= 7860
 
-.PHONY: help install install-dev data validate cluster splits baseline cnn eval test app clean
+.PHONY: help install install-dev data validate cluster splits baseline cnn calibrate \
+        esm-embed esm-train esm-eval esm eval test lint app clean
 
 help:
 	@echo "Common targets:"
@@ -23,7 +25,10 @@ help:
 	@echo "  splits       Build cluster-aware train/val/test splits"
 	@echo "  baseline     Train + evaluate LogReg + RandomForest + XGBoost baselines"
 	@echo "  cnn          Train + evaluate the small one-hot CNN"
+	@echo "  calibrate    Platt-calibrate the CNN and re-evaluate"
+	@echo "  esm          Extract ESM2 embeddings, train + evaluate the MLP head"
 	@echo "  test         Run pytest"
+	@echo "  lint         Run the ruff checks used in CI"
 	@echo "  app          Launch the Gradio demo locally on port $(PORT)"
 	@echo "  clean        Remove caches (keeps data, clusters, splits, checkpoints)"
 
@@ -74,6 +79,9 @@ eval:
 
 test:
 	$(PYTHON) -m pytest -v
+
+lint:
+	ruff check --select E9,F63,F7,F82,W605 .
 
 app:
 	GRADIO_SERVER_PORT=$(PORT) $(PYTHON) app.py
