@@ -1,4 +1,4 @@
-"""Phase 2B step 1: extract per-sequence ESM2 embeddings.
+r"""Phase 2B step 1: extract per-sequence ESM2 embeddings.
 
 Loads an ESM2 model from Hugging Face Hub, mean-pools the last hidden
 state over non-padding tokens, and caches the embedding per sequence to:
