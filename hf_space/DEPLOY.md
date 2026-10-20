@@ -1,7 +1,7 @@
 # Deploy to Hugging Face Spaces
 
-This directory is the deploy-ready bundle. the maintainer pushes manually — the
-autonomous session does NOT push (per HANDOFF.md §1).
+This directory is the deploy-ready bundle. The maintainer pushes it to the
+Space manually.
 
 ## One-time setup
 
@@ -76,7 +76,9 @@ The first push takes a few minutes. Hugging Face will install
 
 The first build of a Space takes ~5-10 min (installing torch, etc.).
 Watch the "Logs" tab on the Space page. When it says "Running on local
-URL: http://0.0.0.0:7860", the app is live.
+URL: http://0.0.0.0:7860", the app is live. (Spaces sets
+`GRADIO_SERVER_NAME=0.0.0.0`; `app.py` reads it and falls back to
+`127.0.0.1` locally.)
 
 Smoke test once it's up:
 
