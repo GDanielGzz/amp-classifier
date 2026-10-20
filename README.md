@@ -1,9 +1,11 @@
 # AMP Classifier
 
+[![CI](https://github.com/GDanielGzz/amp-classifier/actions/workflows/ci.yml/badge.svg)](https://github.com/GDanielGzz/amp-classifier/actions/workflows/ci.yml)
+
 > **Status: research code, not production.**
 > Results are reproducible against the corpus snapshot in
 > `docs/data_card.md` with the random seeds pinned in
-> `ml/scripts/make_splits.py` and `ml/eval/bootstrap.py`. The code is
+> `ml/scripts/make_splits.py` and `ml/eval_common.py`. The code is
 > tested for the cases it was built against and is not hardened for
 > production deployment. Known limitations are documented in
 > [`LIMITATIONS.md`](LIMITATIONS.md). Issues and pull requests welcome.
@@ -96,10 +98,33 @@ make esm        # ESM2-650M frozen embeddings + MLP head
 make app        # Gradio on http://127.0.0.1:7860
 ```
 
-On Windows PowerShell, `dev.bat` mirrors the Makefile targets one-to-one.
+On Windows PowerShell, `dev.bat` mirrors the Makefile targets one-to-one
+(`dev.bat test`, `dev.bat app`, ...). Without `make`, the plain commands
+work on any platform — e.g. `python ml/scripts/make_splits.py`; see the
+Makefile for the script behind each target.
 
 Expected end-to-end runtime on CPU: ~2 hours (dominated by ESM2
 embedding extraction). On a GPU: ~20 minutes.
+
+## Running the tests
+
+```bash
+make test             # or: python -m pytest -v
+make lint             # or: ruff check --select E9,F63,F7,F82,W605 .
+```
+
+The unit tests need no data, checkpoints or model downloads. The
+cluster-purity tests in `tests/test_splits.py` skip until
+`make splits` has generated `ml/data/splits/`; run them after the
+pipeline to verify that no cluster spans the train / test boundary.
+CI runs the same suite on Python 3.11, 3.12 and 3.13 on pushes to `main`
+and on pull requests.
+
+The demo also starts without trained checkpoints: `python app.py` loads
+whichever of `ml/checkpoints/baseline_xgb.json`, `cnn_best.pt`,
+`cnn_calibrator.joblib` and `esm_head_best.pt` exist and otherwise
+shows only the sequence summary (the ESM head additionally downloads
+the ESM2-650M backbone from Hugging Face on first start).
 
 ## Repo layout
 
