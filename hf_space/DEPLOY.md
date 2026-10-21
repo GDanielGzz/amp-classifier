@@ -28,8 +28,6 @@ requirements.txt, this DEPLOY.md). You also need to copy `app.py`, the
 From the project root in PowerShell:
 
 ```powershell
-cd "%USERPROFILE%\Downloads\Claude\projects\AMP Classifier"
-
 # Copy app.py
 Copy-Item app.py hf_space\
 
@@ -57,7 +55,7 @@ since the demo doesn't load them, but it's harmless to leave them.
 Once your HF Space exists and the bundle is built:
 
 ```powershell
-cd "%USERPROFILE%\Downloads\Claude\projects\AMP Classifier\hf_space"
+cd hf_space
 git init -b main
 git remote add origin https://huggingface.co/spaces/SleepyKomodo/amp-classifier
 git lfs install
