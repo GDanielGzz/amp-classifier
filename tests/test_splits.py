@@ -33,7 +33,7 @@ def _read_split(path):
 
 pytestmark = pytest.mark.skipif(
     not (TRAIN_CSV.exists() and VAL_CSV.exists() and TEST_CSV.exists()),
-    reason="splits not generated yet; run dev.bat splits",
+    reason="splits not generated yet; run `make splits` (or `dev.bat splits`)",
 )
 
 

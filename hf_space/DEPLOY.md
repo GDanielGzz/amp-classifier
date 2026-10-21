@@ -1,7 +1,7 @@
 # Deploy to Hugging Face Spaces
 
-This directory is the deploy-ready bundle. the maintainer pushes manually — the
-autonomous session does NOT push (per HANDOFF.md §1).
+This directory is the deploy-ready bundle. The maintainer pushes it to the
+Space manually.
 
 ## One-time setup
 
@@ -28,8 +28,6 @@ requirements.txt, this DEPLOY.md). You also need to copy `app.py`, the
 From the project root in PowerShell:
 
 ```powershell
-cd "C:\Users\danie\Downloads\Claude\projects\AMP Classifier"
-
 # Copy app.py
 Copy-Item app.py hf_space\
 
@@ -44,20 +42,24 @@ Remove-Item -Recurse -Force hf_space\ml\scripts\__pycache__ -ErrorAction Silentl
 Get-ChildItem hf_space\ml\checkpoints
 ```
 
-You should see `baseline_xgb.json` (~1-3 MB) and `cnn_best.pt` (~1 MB).
+You should see the four checkpoints `app.py` loads: `baseline_xgb.json`
+(~1-3 MB), `cnn_best.pt` (~1 MB), `cnn_calibrator.joblib` (Platt scaler
+for the CNN) and `esm_head_best.pt` (the ESM2-650M MLP head; the
+backbone itself is downloaded from the Hub on first start). Any that are
+missing are skipped by the demo, and the Design tab needs the ESM head.
 The other baseline checkpoints (LogReg, RF) can be deleted to save space
-since the demo only loads XGB + CNN, but it's harmless to leave them.
+since the demo doesn't load them, but it's harmless to leave them.
 
 ## Push to the Space
 
 Once your HF Space exists and the bundle is built:
 
 ```powershell
-cd "C:\Users\danie\Downloads\Claude\projects\AMP Classifier\hf_space"
+cd hf_space
 git init -b main
 git remote add origin https://huggingface.co/spaces/SleepyKomodo/amp-classifier
 git lfs install
-git lfs track "*.pt" "*.json"
+git lfs track "*.pt" "*.json" "*.joblib"
 git add .gitattributes
 git add .
 git commit -m "Initial AMP Classifier deploy"
@@ -72,7 +74,9 @@ The first push takes a few minutes. Hugging Face will install
 
 The first build of a Space takes ~5-10 min (installing torch, etc.).
 Watch the "Logs" tab on the Space page. When it says "Running on local
-URL: http://0.0.0.0:7860", the app is live.
+URL: http://0.0.0.0:7860", the app is live. (Spaces sets
+`GRADIO_SERVER_NAME=0.0.0.0`; `app.py` reads it and falls back to
+`127.0.0.1` locally.)
 
 Smoke test once it's up:
 
@@ -88,10 +92,10 @@ Smoke test once it's up:
 
 ## Update the model card
 
-The HF username (`SleepyKomodo`) is already substituted in:
-
-- `hf_space/README.md` (GitHub repo link)
-- `docs/model_card.md` (also gets auto-updated by Step 11's docs pass)
+The HF username (`SleepyKomodo`) is used in the Space URL above. The
+Space card, `hf_space/README.md`, links to the GitHub repo
+(`GDanielGzz/amp-classifier`) for the full docs, limitations and
+citation; update those links if the repo moves.
 
 ## License caveats
 
@@ -113,7 +117,7 @@ Second most common: model checkpoint files weren't tracked by git LFS
 and got committed as text. Fix with:
 
 ```powershell
-git lfs migrate import --include="*.pt,*.json"
+git lfs migrate import --include="*.pt,*.json,*.joblib"
 git push --force
 ```
 

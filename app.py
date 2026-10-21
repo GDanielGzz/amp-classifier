@@ -354,4 +354,5 @@ with gr.Blocks(title="AMP Classifier") as demo:
 
 if __name__ == "__main__":
     port = int(os.environ.get("GRADIO_SERVER_PORT", "7860"))
-    demo.launch(server_name="127.0.0.1", server_port=port)
+    host = os.environ.get("GRADIO_SERVER_NAME", "127.0.0.1")
+    demo.launch(server_name=host, server_port=port)
