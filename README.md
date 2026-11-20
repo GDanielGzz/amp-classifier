@@ -218,4 +218,4 @@ Daniel González Lozano · `sleepy.komodo@protonmail.com` ·
 [ORCID](https://orcid.org/0009-0002-1737-276X)
 
 Postdoctoral researcher, Tecnológico de Monterrey × Technical University
-of Denmark (Novo Nordisk Foundation Center for Biosustainability).
+of Denmark (DTU BRIGHT).
